@@ -6,8 +6,23 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+compileJava {
+    buildDir = "out/production"
+}
+
+compileKotlin {
+    buildDir = "out/production"
+}
+
+sourceSets {
+    main {
+        output.resourcesDir = "out/production/resources"
+    }
+}
+
 repositories {
     mavenCentral()
+    maven { url "https://clojars.org/repo" }
 }
 
 dependencies {
@@ -16,6 +31,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
     compile group: 'org.processing', name: 'core', version: '3.3.7'
+    compile 'ddf.minim:ddf.minim:2.2.1-b8afdc1-SNAPSHOT'
 }
 
 test {
